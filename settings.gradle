@@ -1,0 +1,7 @@
+
+include 'fact-client'
+
+include 'fact-client:platform'
+include 'fact-client:platform:linux-x64'
+include 'fact-client:platform:mac-osx'
+include 'fact-client:platform:windows-x64'
