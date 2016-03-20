@@ -2,3 +2,7 @@
 allprojects {
     ext.downloadsDir = new File(rootDir, '.downloads')
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.12'
+}
