@@ -1,0 +1,4 @@
+
+allprojects {
+    ext.downloadsDir = new File(rootDir, '.downloads')
+}

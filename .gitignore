@@ -55,6 +55,7 @@ target
 #####################################
 .generated
 .cache
+.downloads
 classes
 build
 bin
