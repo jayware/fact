@@ -5,6 +5,8 @@ plugins {
     id "de.undercouch.download" version "2.1.0"
 }
 
+evaluationDependsOn(':fact-client:modules:fact-client-application')
+
 configure([project('linux-x64'),
            project('macosx-x64'),
            project('windows-x64')]) {
@@ -63,13 +65,25 @@ configure([project('linux-x64'),
         }
     }
 
+    task copyModules(type: Copy) {
+        from project(':fact-client:modules:fact-client-application').configurations.runtime {
+            // TODO: fix configuration to exclude these JARs automatically.
+            exclude 'lwjgl-3.0.0b.jar',
+                    'lwjgl-platform-3.0.0b-natives-linux.jar',
+                    'lwjgl-platform-3.0.0b-natives-osx.jar',
+                    'lwjgl-platform-3.0.0b-natives-windows.jar'
+        }
+
+        into "${platformDir}/modules"
+    }
+
     task copyScripts(type: Copy) {
         from fileTree('src')
         from fileTree(project(':fact-client:platform:common').file('src'))
         into platformDir
     }
 
-    task build(dependsOn: [copyScripts, extractJre, extractFramework]) {}
+    task build(dependsOn: [extractFramework, extractJre, copyModules, copyScripts]) {}
 
     task dist(type: Tar, dependsOn: build) {
         from platformDir

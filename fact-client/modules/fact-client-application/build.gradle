@@ -2,9 +2,15 @@ apply plugin: 'java'
 apply plugin: 'osgi'
 
 dependencies {
-//    compile project('modules:skyshard-engine-core:skyshard-engine-core-api')
+    compile project(':skyshard-engine:modules:skyshard-engine-core-api')
+    compile project(':skyshard-engine:modules:skyshard-engine-graphics-api')
 
-    compile 'org.slf4j:slf4j-api:1.7.16'
+    compile 'org.slf4j:slf4j-api:1.7.18'
+
+    runtime project(':skyshard-engine:modules:skyshard-engine-core-impl')
+    runtime project(':skyshard-engine:modules:skyshard-engine-graphics-impl')
+
+    runtime 'ch.qos.logback:logback-classic:1.1.6'
 }
 
 jar {
