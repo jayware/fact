@@ -5,7 +5,7 @@ dependencies {
     compile project(':skyshard-engine:modules:skyshard-engine-core-api')
     compile project(':skyshard-engine:modules:skyshard-engine-graphics-api')
 
-    compile 'org.slf4j:slf4j-api:1.7.18'
+    compile 'org.slf4j:slf4j-api:1.7.19'
 
     runtime project(':skyshard-engine:modules:skyshard-engine-core-impl')
     runtime project(':skyshard-engine:modules:skyshard-engine-graphics-impl')
