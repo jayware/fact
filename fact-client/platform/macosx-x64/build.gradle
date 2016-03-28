@@ -16,3 +16,5 @@ task extractJre(type: Copy, dependsOn: verifyJre, overwrite: true) {
         delete file("${jreDir}/${tarParent}")
     }
 }
+
+task build(dependsOn: [extractFramework, extractJre, copyModules, copyScripts], overwrite: true) {}
