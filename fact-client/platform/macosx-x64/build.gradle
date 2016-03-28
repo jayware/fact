@@ -1,0 +1,18 @@
+
+task extractJre(type: Copy, dependsOn: verifyJre, overwrite: true) {
+    def jreDir = "${platformDir}/jre"
+    def tarParent;
+    from (tarTree(downloadJre.dest).matching {
+        include '**/Contents/Home/**'
+    }) {
+        eachFile { details ->
+            def segments = details.relativePath.segments
+            details.path = (details.path - "${segments[0]}/Contents/Home/")
+            tarParent = segments[0]
+        }
+    }
+    into jreDir
+    doLast {
+        delete file("${jreDir}/${tarParent}")
+    }
+}
