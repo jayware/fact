@@ -1,1 +1,3 @@
-jre/bin/java -Dfelix.config.properties=file:config/framework.properties -jar bin/felix.jar
+#!/usr/bin/env bash
+
+jre/bin/java -classpath bin/skyshard-engine-launcher-0.1.0.jar:bin/felix.jar org.jayware.skyshard.launcher.Main

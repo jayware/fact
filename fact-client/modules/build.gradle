@@ -24,6 +24,8 @@ subprojects {
         project.apply plugin: 'findbugs'
         project.apply plugin: 'license'
 
+        configurations.create('launcher')
+
         repositories {
             mavenCentral()
             jcenter()

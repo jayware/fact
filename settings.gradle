@@ -11,6 +11,7 @@ include 'fact-client:platform:windows-x64'
 
 // Skyshard Engine
 include 'skyshard-engine'
+include 'skyshard-engine:skyshard-engine-launcher'
 include 'skyshard-engine:modules'
 include 'skyshard-engine:modules:skyshard-engine-core-api'
 include 'skyshard-engine:modules:skyshard-engine-core-impl'
@@ -18,3 +19,4 @@ include 'skyshard-engine:modules:skyshard-engine-graphics-api'
 include 'skyshard-engine:modules:skyshard-engine-graphics-impl'
 include 'skyshard-engine:modules:skyshard-engine-lwjgl'
 include 'skyshard-engine:modules:skyshard-engine-math-api'
+include 'skyshard-engine:modules:skyshard-engine-util'

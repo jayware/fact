@@ -2,6 +2,8 @@ apply plugin: 'java'
 apply plugin: 'osgi'
 
 dependencies {
+    launcher project(':skyshard-engine:skyshard-engine-launcher')
+
     compile project(':skyshard-engine:modules:skyshard-engine-core-api')
     compile project(':skyshard-engine:modules:skyshard-engine-graphics-api')
 

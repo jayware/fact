@@ -65,6 +65,11 @@ configure([project('linux-x64'),
         }
     }
 
+    task copyLauncher(type: Copy) {
+        from project(':fact-client:modules:fact-client-application').configurations.launcher
+        into "${platformDir}/bin"
+    }
+
     task copyModules(type: Copy) {
         from project(':fact-client:modules:fact-client-application').configurations.runtime {
             // TODO: fix configuration to exclude these JARs automatically.
@@ -83,13 +88,25 @@ configure([project('linux-x64'),
         into platformDir
     }
 
-    task build(dependsOn: [extractFramework, extractJre, copyModules, copyScripts]) {}
+    task build(dependsOn: [extractFramework, extractJre, copyLauncher, copyModules, copyScripts]) {}
 
     task dist(type: Tar, dependsOn: build) {
         from platformDir
         destinationDir buildDir
         extension 'tar.gz'
         baseName "fact-client-${platformArch}"
+    }
+
+    task run(type: Exec, dependsOn: build) {
+        workingDir platformDir
+        executable "${platformDir}/jre/bin/java"
+        args '-Dfelix.config.properties=file:config/framework.properties', '-jar', 'bin/felix.jar'
+    }
+
+    task debug(type: Exec, dependsOn: build) {
+        workingDir platformDir
+        executable "${platformDir}/jre/bin/java"
+        args '-Xdebug', '-Xrunjdwp:transport=dt_socket,address=5005,server=y', '-Dfelix.config.properties=file:config/framework.properties', '-jar', 'bin/felix.jar'
     }
 
     task cleanPlatform(type: Delete) {

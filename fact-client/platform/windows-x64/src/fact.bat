@@ -1,1 +1,1 @@
-jre/bin/java -Dfelix.config.properties=file:config/framework.properties -jar bin/felix.jar
+jre\bin\java -Dfelix.config.properties=file:config\framework.properties -jar bin\felix.jar
