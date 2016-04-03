@@ -1,1 +1,1 @@
-jre\bin\java -classpath bin\skyshard-engine-launcher-0.1.0.jar:bin\felix.jar org.jayware.skyshard.launcher.Main
+jre\bin\java -classpath bin\skyshard-engine-launcher-0.1.0.jar;bin\felix.jar org.jayware.skyshard.launcher.Main
