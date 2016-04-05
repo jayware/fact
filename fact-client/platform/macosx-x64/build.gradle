@@ -17,4 +17,4 @@ task extractJre(type: Copy, dependsOn: verifyJre, overwrite: true) {
     }
 }
 
-task build(dependsOn: [extractFramework, extractJre, copyModules, copyScripts], overwrite: true) {}
+task build(dependsOn: [extractFramework, extractJre, copyModules, copyScripts, copyLauncher], overwrite: true) {}
