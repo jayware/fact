@@ -22,28 +22,10 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jayware.fact.client.application;
+package org.jayware.skyshard.graphics.api;
 
 
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
-
-
-public class Activator
-implements BundleActivator
+public interface Window
 {
-    @Override
-    public void start(BundleContext context)
-    throws Exception
-    {
-        System.out.println("==========================================================");
-        System.out.println("=             Started F.A.C.T. Client Bundle             =");
-        System.out.println("==========================================================");
-    }
 
-    @Override
-    public void stop(BundleContext context)
-    throws Exception
-    {
-    }
 }

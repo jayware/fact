@@ -71,6 +71,7 @@ configure([project('linux-x64'),
     }
 
     task copyModules(type: Copy) {
+        from project(':fact-client:modules:fact-client-application').jar
         from project(':fact-client:modules:fact-client-application').configurations.runtime {
             // TODO: fix configuration to exclude these JARs automatically.
             exclude 'lwjgl-3.0.0b.jar',

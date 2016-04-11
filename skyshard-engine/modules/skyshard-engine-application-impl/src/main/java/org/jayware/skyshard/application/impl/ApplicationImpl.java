@@ -22,28 +22,25 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jayware.fact.client.application;
+package org.jayware.skyshard.application.impl;
+
+import org.jayware.skyshard.application.api.Application;
+import org.osgi.service.component.annotations.Component;
+
+import java.util.UUID;
+
+import static org.osgi.service.component.annotations.ServiceScope.SINGLETON;
 
 
-import org.osgi.framework.BundleActivator;
-import org.osgi.framework.BundleContext;
-
-
-public class Activator
-implements BundleActivator
+@Component(immediate = true, scope = SINGLETON)
+public class ApplicationImpl
+implements Application
 {
-    @Override
-    public void start(BundleContext context)
-    throws Exception
-    {
-        System.out.println("==========================================================");
-        System.out.println("=             Started F.A.C.T. Client Bundle             =");
-        System.out.println("==========================================================");
-    }
+    private final UUID myId = UUID.randomUUID();
 
     @Override
-    public void stop(BundleContext context)
-    throws Exception
+    public UUID getId()
     {
+        return myId;
     }
 }

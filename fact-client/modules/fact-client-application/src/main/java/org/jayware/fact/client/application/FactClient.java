@@ -22,33 +22,52 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jayware.skyshard.core.impl;
+package org.jayware.fact.client.application;
 
 
-import org.jayware.skyshard.core.api.Fubar;
+import org.jayware.skyshard.application.api.Application;
+import org.jayware.skyshard.graphics.api.Window;
+import org.jayware.skyshard.graphics.api.WindowManager;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.osgi.service.component.annotations.Reference;
 
 
-@Component(service = Fubar.class)
-public class FubarServiceImpl
-implements Fubar
+@Component(immediate = true)
+public class FactClient
 {
-    private static final Logger log = LoggerFactory.getLogger(FubarServiceImpl.class);
+    private Application myApplication;
+    private WindowManager myWindowManager;
 
     @Activate
-    public void activate()
+    void activate()
     {
-        log.info("====================================");
-        log.info("FubarService activated and deployed!");
-        log.info("====================================");
+        System.out.println("=================================================================");
+        System.out.println("= Started F.A.C.T. Client: " + myApplication.getId() + " =");
+        System.out.println("=================================================================");
+
+        final Window window = myWindowManager.createWindow();
     }
 
-    @Override
-    public String hello()
+    @Reference
+    void bindApplication(Application application)
     {
-        return "Hello World";
+        myApplication = application;
+    }
+
+    void unbindApplication(Application application)
+    {
+        myApplication = null;
+    }
+
+    @Reference
+    void bindWindowManager(WindowManager windowManager)
+    {
+        myWindowManager = windowManager;
+    }
+
+    void unbindWindowManager(WindowManager windowManager)
+    {
+        myWindowManager = null;
     }
 }
