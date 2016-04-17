@@ -31,22 +31,34 @@ import org.jayware.skyshard.graphics.api.WindowManager;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @Component(immediate = true)
 public class FactClient
 {
+    private static final Logger log = LoggerFactory.getLogger(FactClient.class);
+
     private Application myApplication;
     private WindowManager myWindowManager;
+    private Window myWindow;
 
     @Activate
     void activate()
     {
-        System.out.println("=================================================================");
-        System.out.println("= Started F.A.C.T. Client: " + myApplication.getId() + " =");
-        System.out.println("=================================================================");
+        log.info("=================================================================");
+        log.info("= Started F.A.C.T. Client: " + myApplication.getId() + " =");
+        log.info("=================================================================");
 
-        final Window window = myWindowManager.createWindow();
+        myWindow = myWindowManager.createWindow();
+        myWindow.setSize(1024, 768);
+
+    }
+
+    void deactivate()
+    {
+        myWindow.destroy();
     }
 
     @Reference

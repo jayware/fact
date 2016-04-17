@@ -9,8 +9,9 @@ dependencies {
 
     compile 'org.slf4j:slf4j-api:1.7.19'
 
-    runtime project(':skyshard-engine:modules:skyshard-engine-application-impl')
+    runtime project(':skyshard-engine:modules:skyshard-engine-core-impl')
     runtime project(':skyshard-engine:modules:skyshard-engine-graphics-impl')
+    runtime project(':skyshard-engine:modules:skyshard-engine-application-impl')
 
     runtime 'ch.qos.logback:logback-classic:1.1.6'
     runtime 'org.apache.felix:org.apache.felix.scr:2.0.2'
