@@ -22,13 +22,57 @@
  *     You should have received a copy of the GNU Lesser General Public License
  *     along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package org.jayware.skyshard.core.impl;
-
-import org.jayware.skyshard.core.api.TaskResult;
+package org.jayware.e2.util;
 
 
-public class TaskResultImpl
-implements TaskResult
+import java.util.Objects;
+
+
+/**
+ * A <code>Key</code>
+ *
+ * @param <V> the corresponding value type.
+ *
+ * @since 1.0
+ */
+public class Key<V>
 {
+    private final String myKey;
 
+    private Key(String key)
+    {
+        myKey = key;
+    }
+
+    public static <V> Key<V> createKey(String key)
+    {
+        return new Key(key);
+    }
+
+    @Override
+    public boolean equals(Object o)
+    {
+        if (this == o)
+        {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass())
+        {
+            return false;
+        }
+        final Key<?> key = (Key<?>) o;
+        return Objects.equals(myKey, key.myKey);
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(myKey);
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Key{ " + myKey + " }";
+    }
 }
