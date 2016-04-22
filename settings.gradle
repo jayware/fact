@@ -21,4 +21,6 @@ include 'skyshard-engine:modules:skyshard-engine-graphics-api'
 include 'skyshard-engine:modules:skyshard-engine-graphics-impl'
 include 'skyshard-engine:modules:skyshard-engine-lwjgl'
 include 'skyshard-engine:modules:skyshard-engine-math-api'
-include 'skyshard-engine:modules:skyshard-engine-util'
+
+// Solid Utilities
+include 'solid-utilities'
