@@ -107,7 +107,7 @@ configure([project('linux-x64'),
     task debug(type: Exec, dependsOn: build) {
         workingDir platformDir
         executable "${platformDir}/jre/bin/java"
-        args '-Xdebug', '-Xrunjdwp:transport=dt_socket,address=5005,server=y', '-Dfelix.config.properties=file:config/framework.properties', '-jar', 'bin/felix.jar'
+        args '-Xdebug', '-Xrunjdwp:transport=dt_socket,address=8000,server=y', '-Dfelix.config.properties=file:config/framework.properties', '-jar', 'bin/felix.jar'
     }
 
     task cleanPlatform(type: Delete) {
